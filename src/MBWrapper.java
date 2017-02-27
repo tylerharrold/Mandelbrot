@@ -40,17 +40,17 @@ public class MBWrapper extends JPanel implements MouseListener{
 		// begin measurements and thread
 		long start = System.currentTimeMillis();
 		pm1 = new ParallelMandelbrot(0 , WIDTH, HEIGHT, THRESH, pixels);
-//		pm2 = new ParallelMandelbrot(1 , WIDTH, HEIGHT, THRESH, pixels);
-//		pm3 = new ParallelMandelbrot(2 , WIDTH, HEIGHT, THRESH, pixels);
-//		pm4 = new ParallelMandelbrot(3 , WIDTH, HEIGHT, THRESH, pixels);
+		pm2 = new ParallelMandelbrot(1 , WIDTH, HEIGHT, THRESH, pixels);
+	//	pm3 = new ParallelMandelbrot(2 , WIDTH, HEIGHT, THRESH, pixels);
+	//	pm4 = new ParallelMandelbrot(3 , WIDTH, HEIGHT, THRESH, pixels);
 //		pm5 = new ParallelMandelbrot(4 , WIDTH, HEIGHT, THRESH, pixels);
 //		pm6 = new ParallelMandelbrot(5 , WIDTH, HEIGHT, THRESH, pixels);
 //		pm7 = new ParallelMandelbrot(6 , WIDTH, HEIGHT, THRESH, pixels);
 //		pm8 = new ParallelMandelbrot(7 , WIDTH, HEIGHT, THRESH, pixels);
 		pm1.start();
-//		pm2.start();
-//		pm3.start();
-//		pm4.start();
+		pm2.start();
+	//	pm3.start();
+	//	pm4.start();
 //		pm5.start();
 //		pm6.start();
 //		pm7.start();
@@ -58,9 +58,9 @@ public class MBWrapper extends JPanel implements MouseListener{
 		
 		try {
 			pm1.join();
-//			pm2.join();
-//			pm3.join();
-//			pm4.join();
+			pm2.join();
+	//		pm3.join();
+	//		pm4.join();
 //			pm5.join();
 //			pm6.join();
 //			pm7.join();

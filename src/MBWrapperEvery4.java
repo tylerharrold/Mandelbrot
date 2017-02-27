@@ -42,7 +42,7 @@ public class MBWrapperEvery4 extends JPanel implements MouseListener{
 		pm1 = new ParallelMandelbrotEvery4(0 , WIDTH, HEIGHT, THRESH, pixels);
 		pm2 = new ParallelMandelbrotEvery4(1 , WIDTH, HEIGHT, THRESH, pixels);
 		pm3 = new ParallelMandelbrotEvery4(2 , WIDTH, HEIGHT, THRESH, pixels);
-//		pm4 = new ParallelMandelbrotEvery4(3 , WIDTH, HEIGHT, THRESH, pixels);
+		pm4 = new ParallelMandelbrotEvery4(3 , WIDTH, HEIGHT, THRESH, pixels);
 //		pm5 = new ParallelMandelbrotEvery4(4 , WIDTH, HEIGHT, THRESH, pixels);
 //		pm6 = new ParallelMandelbrotEvery4(5 , WIDTH, HEIGHT, THRESH, pixels);
 //		pm7 = new ParallelMandelbrotEvery4(6 , WIDTH, HEIGHT, THRESH, pixels);
@@ -50,7 +50,7 @@ public class MBWrapperEvery4 extends JPanel implements MouseListener{
 		pm1.start();
 		pm2.start();
 		pm3.start();
-//		pm4.start();
+		pm4.start();
 //		pm5.start();
 //		pm6.start();
 //		pm7.start();
@@ -60,7 +60,7 @@ public class MBWrapperEvery4 extends JPanel implements MouseListener{
 			pm1.join();
 			pm2.join();
 			pm3.join();
-//			pm4.join();
+			pm4.join();
 //			pm5.join();
 //			pm6.join();
 //			pm7.join();
