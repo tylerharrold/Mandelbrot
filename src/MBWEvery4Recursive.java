@@ -8,7 +8,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class SerialWrapper extends JPanel implements MouseListener{
+public class MBWEvery4Recursive extends JPanel implements MouseListener{
 	private JFrame frame;
 	public static final int THRESH = 10000;
 	private BufferedImage buffImage;
@@ -17,9 +17,9 @@ public class SerialWrapper extends JPanel implements MouseListener{
 	private final int HEIGHT = 800;
 	private long duration;
 
-	private SerialMandelbrot sm;
+	private RecursiveEvery4 mb0;
 
-	public SerialWrapper(){
+	public MBWEvery4Recursive(){
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		this.addMouseListener(this);
 		frame = new JFrame();
@@ -31,30 +31,34 @@ public class SerialWrapper extends JPanel implements MouseListener{
 		frame.setVisible(true);
 
 
-		// NOTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		// lets try it so that even in a static implementation, each thread is responsible for calling the next thread
-		// although each thread waiting for the join might actually kill the benefit
+
 
 		// setup array of pixels
 		buffImage = new BufferedImage(WIDTH , HEIGHT , BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt)(buffImage.getRaster().getDataBuffer())).getData();
 
 		// begin measurements and thread
-
 		long start = System.currentTimeMillis();
-        sm = new SerialMandelbrot(WIDTH , HEIGHT , THRESH, pixels);
-		sm.start();
-		try{
-			sm.join();
-		}catch(InterruptedException e){
+		mb0 = new RecursiveEvery4(4 , 0, WIDTH , HEIGHT, THRESH, pixels);
+		mb0.start();
+		try {
+			mb0.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		duration = System.currentTimeMillis() - start;
 		System.out.println("duration in millis: " + duration);
 
+		//runMandelbrot();
 		repaint();
 	}
 
+	private void runMandelbrot(){
+		while(true){
+			repaint();
+		}
+	}
 
 	public void paint(Graphics g){
 
@@ -63,7 +67,7 @@ public class SerialWrapper extends JPanel implements MouseListener{
 	}
 
 	public static void main(String[] args){
-		new LBWrapper();
+		new MBWEvery4Recursive();
 	}
 
 	@Override
