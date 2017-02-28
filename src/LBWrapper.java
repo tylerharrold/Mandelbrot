@@ -17,7 +17,7 @@ public class LBWrapper extends JPanel implements MouseListener{
 	private final int HEIGHT = 800;
 	private long duration;
 
-	private ParallelMandelbrot pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8;
+	//private ParallelMandelbrot pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8;
 	private LBMandelbrot lbmUp , lbmDown;
 
 	public LBWrapper(){

@@ -1,24 +1,26 @@
 // this mandelbrot algorithm is a simple line by line alternation
-public class ParallelMandelbrot extends Thread{
+public class AlternatingRowMandelbrot extends Thread{
 	
 	private int threadID;
+	private int totalThreads;
 	private int width, height;
 	private int thresh;
 	private int[] pixels;
 	
-	public ParallelMandelbrot(int threadID, int width, int height, int thresh, int[] pixels){
+	public AlternatingRowMandelbrot(int threadID, int totalThreads , int width, int height, int thresh, int[] pixels){
 		this.threadID = threadID;
 		this.width = width;
 		this.height = height;
 		this.thresh = thresh;
 		this.pixels = pixels;
+		this.totalThreads = totalThreads;
 		
 	}
 	
 	private void calculatePoints(){
 		
-		// iterate over every pixel in the screen
-		for(int yPix = threadID ; yPix < height ; yPix+=1){
+		// iterate over every pixel in the screen, row by row
+		for(int yPix = threadID ; yPix < height ; yPix+=totalThreads){
 			for(int xPix = 0 ; xPix < width ; xPix+=1){
 				pixels[yPix * height + xPix] = mandelbrotIterations(xPix, yPix);
 				

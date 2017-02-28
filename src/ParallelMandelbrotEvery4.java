@@ -1,12 +1,14 @@
 
 public class ParallelMandelbrotEvery4 extends Thread{
 	private int threadID;
+	private int totalThreads;
 	private int width, height;
 	private int thresh;
 	private int[] pixels;
 	
-	public ParallelMandelbrotEvery4(int threadID, int width, int height, int thresh, int[] pixels){
+	public ParallelMandelbrotEvery4(int threadID ,int totalThreads, int width, int height, int thresh, int[] pixels){
 		this.threadID = threadID;
+		this.totalThreads = totalThreads;
 		this.width = width;
 		this.height = height;
 		this.thresh = thresh;
@@ -18,7 +20,7 @@ public class ParallelMandelbrotEvery4 extends Thread{
 		
 		// iterate over every pixel in the screen
 		for(int yPix = 0 ; yPix < height ; yPix++){
-			for(int xPix = threadID ; xPix < width ; xPix+=3){
+			for(int xPix = threadID ; xPix < width ; xPix+=totalThreads){
 				pixels[yPix * height + xPix] = mandelbrotIterations(xPix, yPix);
 				
 			}
